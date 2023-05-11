@@ -1,22 +1,15 @@
 import React from "react";
 import { GetServerSideProps } from "next";
 import dbConnect from "../db/connect";
-import Product from "../db/models/Product";
-import { Document } from "mongoose";
+import Product, { Product as ProductInterface } from "../db/models/Product";
 
-interface IProduct extends Document {
-  title: string;
-  ean: string;
-  _id: string;
-}
-
+// Define the interface for the Home page props
 interface Props {
-  products: IProduct[];
+  products: ProductInterface[];
 }
 
 export default function Home({ products }: Props) {
-  //   console.log(products);
-
+  // Render the list of products
   return (
     <div>
       <h1>Product List</h1>
@@ -31,10 +24,14 @@ export default function Home({ products }: Props) {
   );
 }
 
+// Define the server-side props for the Home page
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
+  // Connect to the MongoDB database using Mongoose
   await dbConnect();
 
+  // Fetch all products from the database using the Product model
   const products = await Product.find({});
 
+  // Return the products as props for the Home page
   return { props: { products: JSON.parse(JSON.stringify(products)) } };
 };
