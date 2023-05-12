@@ -1,37 +1,27 @@
 import React from "react";
 import { GetServerSideProps } from "next";
 import dbConnect from "../db/connect";
-import Product, { Product as ProductInterface } from "../db/models/Product";
+import DbProduct, {
+  DbProduct as ProductInterface,
+} from "../db/models/DbProduct";
+import ProductList from "../components/ProductList";
 
-// Define the interface for the Home page props
 interface Props {
   products: ProductInterface[];
 }
 
 export default function Home({ products }: Props) {
-  // Render the list of products
-  return (
-    <div>
-      <h1>Product List</h1>
-      <ul>
-        {products.map((product) => (
-          <li key={product._id}>
-            {product.ean} - {product.title}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+  return <ProductList products={products} />;
 }
 
-// Define the server-side props for the Home page
+/*getServerSideProps is a Next.js API that runs only on the server-side before the component is loaded and renders. 
+It is used to pre-render the page with the fetched data as initial props. See this as Next.js magic: This allows for 
+faster rendering as the page is pre-rendered with the fetched data.*/
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
   // Connect to the MongoDB database using Mongoose
   await dbConnect();
 
-  // Fetch all products from the database using the Product model
-  const products = await Product.find({});
+  const products = await DbProduct.find({});
 
-  // Return the products as props for the Home page
   return { props: { products: JSON.parse(JSON.stringify(products)) } };
 };
