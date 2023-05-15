@@ -1,22 +1,50 @@
+/* components/ProductList/ProductList.tsx
+\ */
+
 import React from "react";
 import { DbProduct } from "../../db/models/DbProduct";
+import {
+  CardList,
+  Card,
+  ImageWrapper,
+  Image,
+  ProductInfo,
+  ProductName,
+  EAN,
+  Description,
+  Durability,
+} from "./ProductListStyles";
 
 interface Props {
   products: DbProduct[];
 }
 
-/*React.FC is a type alias for React function components in TypeScript. It stands for "Function Component" 
-and is a shorthand for defining a function component in TypeScript.*/
 const ProductList: React.FC<Props> = ({ products }) => {
   return (
     <div>
-      <ul>
+      <CardList>
         {products.map((product) => (
-          <li key={product._id}>
-            {product.ean} - {product.title}
-          </li>
+          <Card key={product._id}>
+            <ImageWrapper>
+              <Image src={product.images[0]} alt="Product Image" />
+            </ImageWrapper>
+            <ProductInfo>
+              <ProductName>
+                {product.title.length > 20
+                  ? product.title.slice(0, 20) + "..."
+                  : product.title}
+              </ProductName>
+              <EAN>EAN: {product.ean}</EAN>
+              <Description>
+                {product.description.length > 100
+                  ? product.description.slice(0, 100) + "..."
+                  : product.description}
+              </Description>
+              <Durability>Expected durability:</Durability>
+            </ProductInfo>
+          </Card>
         ))}
-      </ul>
+      </CardList>
     </div>
   );
 };
