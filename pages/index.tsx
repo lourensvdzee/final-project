@@ -4,7 +4,7 @@ import dbConnect from "../db/connect";
 import DbProduct, {
   DbProduct as ProductInterface,
 } from "../db/models/DbProduct";
-import ProductList from "../components/ProductList";
+import ProductList from "../components/ProductList/ProductList";
 
 interface Props {
   products: ProductInterface[];

@@ -1,5 +1,5 @@
 import React from "react";
-import { DbProduct } from "../db/models/DbProduct";
+import { DbProduct } from "../../db/models/DbProduct";
 
 interface Props {
   products: DbProduct[];
@@ -10,7 +10,6 @@ and is a shorthand for defining a function component in TypeScript.*/
 const ProductList: React.FC<Props> = ({ products }) => {
   return (
     <div>
-      <h1>Product List</h1>
       <ul>
         {products.map((product) => (
           <li key={product._id}>

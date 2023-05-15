@@ -2,6 +2,7 @@ import React from "react";
 import type { AppProps } from "next/app";
 import { SWRConfig } from "swr";
 import type { ReactElement } from "react";
+import Header from "../components/Header/Header";
 
 type ComponentType = {
   (props: { ean: number; title: string }): ReactElement;
@@ -15,6 +16,7 @@ function MyApp({
 }: AppProps & { Component: ComponentType }) {
   return (
     <SWRConfig>
+      <Header />
       <Component {...pageProps} />
     </SWRConfig>
   );
