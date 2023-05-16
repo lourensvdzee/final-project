@@ -8,6 +8,7 @@ import {
   Card,
   ImageWrapper,
   Image,
+  ProductInfoWrapper,
   ProductInfo,
   ProductName,
   EAN,
@@ -29,21 +30,23 @@ const ProductList: React.FC<Props> = ({ products }) => {
             <ImageWrapper>
               <Image src={product.images[0]} alt="Product Image" />
             </ImageWrapper>
-            <ProductInfo>
-              <ProductName>
-                {product.title.length > 20
-                  ? product.title.slice(0, 20) + "..."
-                  : product.title}
-              </ProductName>
-              <EAN>EAN: {product.ean}</EAN>
-              <Description>
-                {product.description.length > 100
-                  ? product.description.slice(0, 200) + "..."
-                  : product.description}{" "}
-                (<MoreLink>more</MoreLink>)
-              </Description>
+            <ProductInfoWrapper>
+              <ProductInfo>
+                <ProductName>
+                  {product.title.length > 24
+                    ? product.title.slice(0, 24) + "..."
+                    : product.title}
+                </ProductName>
+                <EAN>EAN: {product.ean}</EAN>
+                <Description>
+                  {product.description.length > 120
+                    ? product.description.slice(0, 120) + "..."
+                    : product.description}{" "}
+                  (<MoreLink>more</MoreLink>)
+                </Description>
+              </ProductInfo>
               <Durability>Expected durability:</Durability>
-            </ProductInfo>
+            </ProductInfoWrapper>
           </Card>
         ))}
       </CardList>

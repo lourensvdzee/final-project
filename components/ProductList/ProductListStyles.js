@@ -4,20 +4,20 @@
 import styled, { css } from 'styled-components';
 
 export const CardList = styled.ul`
+  color: #6f6f6f;
   display: flex;
   flex-wrap: wrap;
-  gap:5px;
+  gap:8px;
   justify-content: center;
 `;
 
 export const Card = styled.li`
   width: 400px;
   height: 200px;
-  margin-bottom: 5px;
   padding: 10px;
-  border: 1px solid #ccc;
   border-radius: 10px;
   display: flex;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
   `;
 
 export const ImageWrapper = styled.div`
@@ -26,6 +26,10 @@ export const ImageWrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    border-radius: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px 0 #ccc;
     `;
 
 export const Image = styled.img`
@@ -34,9 +38,6 @@ max-width: 30vw;
 max-height:42vw;
 object-fit: cover;
 margin: 5px;
-border-radius: 10px;
-border: 1px solid #ccc;
-box-shadow: 0 0 10px 0 #ccc;
 
 
 @media (min-width: 500px) {
@@ -60,12 +61,22 @@ box-shadow: 0 0 10px 0 #ccc;
 }
 `;
 
+export const ProductInfoWrapper = styled.div`
+display: flex;
+flex-direction: column;
+margin: 0px 0px 0px 5px;
+`;
+
 export const ProductInfo = styled.div`
   text-align: left;
-
   flex-grow: 1;
   display: flex;
+  padding: 10px;
   flex-direction: column;
+  border-radius: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px 0 #ccc;
 `;
 
 export const ProductName = styled.h3`
@@ -88,7 +99,11 @@ export const MoreLink = styled.a`
 `;
 
 export const Durability = styled.p`
-  margin: 15px 0;
+  margin: 5px 0px 0px 0px;
   font-style: italic;
-  margin-top: auto;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #F8F6F4;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px 0 #ccc;
 `;
