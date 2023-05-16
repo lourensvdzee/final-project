@@ -1,7 +1,7 @@
 /* components/ProductList/ProductListStyles.js
 \ */
 
-import styled from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const CardList = styled.ul`
   display: flex;
@@ -11,7 +11,8 @@ export const CardList = styled.ul`
 `;
 
 export const Card = styled.li`
-  max-width: 300px;
+  width: 400px;
+  height: 200px;
   margin-bottom: 5px;
   padding: 10px;
   border: 1px solid #ccc;
@@ -29,15 +30,37 @@ export const ImageWrapper = styled.div`
 
 export const Image = styled.img`
 display: inline-block;
-margin: 5px;
-width: 15vw;
+max-width: 30vw;
+max-height:42vw;
 object-fit: cover;
-  margin-bottom: 10px;
-  `;
+margin: 5px;
+border-radius: 10px;
+border: 1px solid #ccc;
+box-shadow: 0 0 10px 0 #ccc;
+
+
+@media (min-width: 500px) {
+    max-width: 20vw;
+    max-height:25vw;
+}
+
+@media (min-width: 800px) {
+    max-width: 15vw;
+    max-height: 20vw;
+}
+
+@media (min-width: 1000px) {
+    max-width: 10vw;
+    max-height: 15vw;
+}
+
+@media (min-width: 1600px) {
+    max-width: 5vw;
+    max-height: 10vw;
+}
+`;
 
 export const ProductInfo = styled.div`
-  width: 45vw;
-  height: 100%;
   text-align: left;
 
   flex-grow: 1;
@@ -59,9 +82,13 @@ export const Description = styled.p`
   text-overflow: ellipsis;
 `;
 
+export const MoreLink = styled.a`
+  color: blue;
+  cursor: pointer;
+`;
+
 export const Durability = styled.p`
-  margin: 5px 0;
+  margin: 15px 0;
   font-style: italic;
-  
   margin-top: auto;
 `;

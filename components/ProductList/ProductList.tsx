@@ -12,6 +12,7 @@ import {
   ProductName,
   EAN,
   Description,
+  MoreLink,
   Durability,
 } from "./ProductListStyles";
 
@@ -37,8 +38,9 @@ const ProductList: React.FC<Props> = ({ products }) => {
               <EAN>EAN: {product.ean}</EAN>
               <Description>
                 {product.description.length > 100
-                  ? product.description.slice(0, 100) + "..."
-                  : product.description}
+                  ? product.description.slice(0, 200) + "..."
+                  : product.description}{" "}
+                (<MoreLink>more</MoreLink>)
               </Description>
               <Durability>Expected durability:</Durability>
             </ProductInfo>
