@@ -12,8 +12,7 @@ import {
   ProductInfo,
   ProductName,
   EAN,
-  Description,
-  MoreLink,
+  Price,
   Durability,
 } from "./ProductListStyles";
 
@@ -27,25 +26,24 @@ const ProductList: React.FC<Props> = ({ products }) => {
       <CardList>
         {products.map((product) => (
           <Card key={product._id}>
-            <ImageWrapper>
-              <Image src={product.images[0]} alt="Product Image" />
-            </ImageWrapper>
+            <ProductName>
+              {product.title.length > 24
+                ? product.title.slice(0, 24) + "..."
+                : product.title}
+            </ProductName>
+            <br />
             <ProductInfoWrapper>
+              <ImageWrapper>
+                <Image src={product.images[0]} alt="Product Image" />
+              </ImageWrapper>
               <ProductInfo>
-                <ProductName>
-                  {product.title.length > 24
-                    ? product.title.slice(0, 24) + "..."
-                    : product.title}
-                </ProductName>
                 <EAN>EAN: {product.ean}</EAN>
-                <Description>
-                  {product.description.length > 120
-                    ? product.description.slice(0, 120) + "..."
-                    : product.description}{" "}
-                  (<MoreLink>more</MoreLink>)
-                </Description>
+                <Durability>Durability:</Durability>
+                <Price>
+                  Price:
+                  <br />${product.lowest_recorded_price}
+                </Price>
               </ProductInfo>
-              <Durability>Expected durability:</Durability>
             </ProductInfoWrapper>
           </Card>
         ))}

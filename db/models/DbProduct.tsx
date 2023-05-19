@@ -4,7 +4,7 @@ export interface DbProduct extends Document {
   title: string;
   ean: string;
   images: string[];
-  description: string;
+  lowest_recorded_price: number;
 }
 
 const { Schema } = mongoose;
@@ -13,7 +13,7 @@ const dbProductSchema = new Schema({
   title: { type: String, required: true },
   ean: { type: String, required: true, unique: true },
   images: { type: [String], required: true },
-  description: { type: String, required: true },
+  lowest_recorded_price: { type: Number, required: true },
 });
 
 const DbProduct =
