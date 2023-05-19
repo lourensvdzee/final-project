@@ -1,0 +1,276 @@
+[{
+  "_id": {
+    "$oid": "626a48a8916f633a190f0251"
+  },
+  "name": "Shrimp",
+  "description": "lives underwater",
+  "price": 12,
+  "currency": "EUR",
+  "reviews": [
+    "63b598370e7740872e8c10c1",
+    {
+      "$oid": "64591ca77920075b78bcbbfe"
+    },
+    {
+      "$oid": "64591d777920075b78bcbc06"
+    },
+    {
+      "$oid": "645925607920075b78bcbc9c"
+    },
+    {
+      "$oid": "6459257e7920075b78bcbca4"
+    },
+    {
+      "$oid": "6459263f7920075b78bcbcae"
+    },
+    {
+      "$oid": "6459264d7920075b78bcbcb4"
+    },
+    {
+      "$oid": "645926c27920075b78bcbcbe"
+    }
+  ],
+  "__v": 7
+},{
+  "_id": {
+    "$oid": "626a48ef916f633a190f0255"
+  },
+  "name": "Anemonefish",
+  "description": "Nemo",
+  "price": 65,
+  "currency": "EUR",
+  "reviews": [
+    "63b598370e7740872e8c10c2",
+    {
+      "$oid": "64591fff7920075b78bcbc18"
+    },
+    {
+      "$oid": "645921c17920075b78bcbc24"
+    },
+    {
+      "$oid": "6459228b7920075b78bcbc30"
+    },
+    {
+      "$oid": "645922fb7920075b78bcbc36"
+    },
+    {
+      "$oid": "645923a07920075b78bcbc44"
+    },
+    {
+      "$oid": "645923c27920075b78bcbc4e"
+    },
+    {
+      "$oid": "645924457920075b78bcbc58"
+    },
+    {
+      "$oid": "645924717920075b78bcbc64"
+    },
+    {
+      "$oid": "6459249b7920075b78bcbc6e"
+    },
+    {
+      "$oid": "645924a87920075b78bcbc72"
+    }
+  ],
+  "__v": 10
+},{
+  "_id": {
+    "$oid": "626a4929916f633a190f0258"
+  },
+  "name": "Splendid anemone",
+  "description": "Is splendid",
+  "price": 90,
+  "currency": "EUR",
+  "reviews": [
+    "63b598370e7740872e8c10c3",
+    "63b598370e7740872e8c10c4"
+  ]
+},{
+  "_id": {
+    "$oid": "626a494c916f633a190f025b"
+  },
+  "name": "Killer mussel",
+  "description": "Is prettier than her name",
+  "price": 12,
+  "currency": "EUR",
+  "__v": 2,
+  "reviews": [
+    {
+      "$oid": "64591648a7f22580f1b8e737"
+    },
+    {
+      "$oid": "645916c67920075b78bcbbd6"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "626a49ce916f633a190f025f"
+  },
+  "name": "Angelfish",
+  "description": "A diurnal loner",
+  "price": 90,
+  "currency": "EUR",
+  "reviews": [
+    "63b598370e7740872e8c10c5",
+    "63b598370e7740872e8c10c2"
+  ]
+},{
+  "_id": {
+    "$oid": "626a49f6916f633a190f0262"
+  },
+  "name": "Guppy",
+  "description": "Small but nice",
+  "price": 5,
+  "currency": "EUR",
+  "reviews": [
+    "63b598370e7740872e8c10c4",
+    "63b598370e7740872e8c10c1",
+    {
+      "$oid": "645916f67920075b78bcbbe1"
+    },
+    {
+      "$oid": "6459171b7920075b78bcbbe7"
+    }
+  ],
+  "__v": 2
+},{
+  "_id": {
+    "$oid": "626a4a1e916f633a190f0266"
+  },
+  "name": "Rainbow fish",
+  "description": "In all colors",
+  "price": 12,
+  "currency": "EUR",
+  "__v": 4,
+  "reviews": [
+    {
+      "$oid": "645924cd7920075b78bcbc7f"
+    },
+    {
+      "$oid": "645924fa7920075b78bcbc85"
+    },
+    {
+      "$oid": "645925187920075b78bcbc8d"
+    },
+    {
+      "$oid": "6459254c7920075b78bcbc95"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "645905eca7f22580f1b8e705"
+  },
+  "name": "henk",
+  "description": "blabla",
+  "price": 87,
+  "currency": "EUR",
+  "reviews": [
+    {
+      "$oid": "645924b87920075b78bcbc78"
+    },
+    {
+      "$oid": "645926db7920075b78bcbcc7"
+    }
+  ],
+  "__v": 2
+},{
+  "_id": {
+    "$oid": "64590f1aa7f22580f1b8e716"
+  },
+  "name": "Geertruida",
+  "description": "Mooie fish jong!",
+  "price": 100000,
+  "currency": "EUR",
+  "reviews": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645916b17920075b78bcbbce"
+  },
+  "name": "pietertje",
+  "description": "blabla",
+  "price": 1,
+  "currency": "EUR",
+  "reviews": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "64594d4e5510db60d430339c"
+  },
+  "name": "Peter",
+  "description": "Dikke vissenvanger",
+  "price": 12,
+  "currency": "USD",
+  "reviews": [
+    {
+      "$oid": "64594d605510db60d43033a1"
+    }
+  ],
+  "__v": 1
+},{
+  "_id": {
+    "$oid": "645955ca6fc54dadd6cf213f"
+  },
+  "name": "jaaa",
+  "description": "neeeee",
+  "price": 444,
+  "currency": "EUR",
+  "reviews": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645955f512e3ac6e5e7a2f51"
+  },
+  "name": "mooiiii jung",
+  "description": "jaaaaa jungg",
+  "price": 3,
+  "currency": "EUR",
+  "reviews": [
+    {
+      "$oid": "6459564f7c14f4aaeb7b3972"
+    }
+  ],
+  "__v": 1
+},{
+  "_id": {
+    "$oid": "64595d22569b90a614787b84"
+  },
+  "name": "jannie",
+  "description": "ja hoor ja",
+  "price": 25,
+  "currency": "EUR",
+  "reviews": [
+    {
+      "$oid": "64595d2d569b90a614787b89"
+    }
+  ],
+  "__v": 1
+},{
+  "_id": {
+    "$oid": "6459646247cfbe43191025cc"
+  },
+  "name": "supertjes",
+  "description": "ja hoor nee",
+  "price": 45,
+  "currency": "EUR",
+  "reviews": [
+    {
+      "$oid": "6459646f47cfbe43191025d1"
+    }
+  ],
+  "__v": 1
+},{
+  "_id": {
+    "$oid": "6459649ae893f2b67c6ef84c"
+  },
+  "name": "hendrik",
+  "description": "ido ambacht",
+  "price": 47,
+  "currency": "EUR",
+  "reviews": [
+    {
+      "$oid": "645964b0e893f2b67c6ef851"
+    }
+  ],
+  "__v": 1
+}]
