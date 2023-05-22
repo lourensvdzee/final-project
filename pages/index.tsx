@@ -1,3 +1,6 @@
+/* pages/index.tsx
+\ */
+
 import React from "react";
 import { GetServerSideProps } from "next";
 import dbConnect from "../db/connect";

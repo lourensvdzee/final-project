@@ -1,3 +1,6 @@
+/* db/models/DbProducts.tsx
+\ */
+
 import mongoose, { Document } from "mongoose";
 
 export interface DbProduct extends Document {

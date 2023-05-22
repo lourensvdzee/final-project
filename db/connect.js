@@ -1,3 +1,6 @@
+/* db/connect.js 
+\ */
+
 import mongoose from 'mongoose'
 
 // Retrieve the MongoDB connection URI from the environment variables
