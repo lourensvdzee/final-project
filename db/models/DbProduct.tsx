@@ -7,6 +7,7 @@ export interface Durability {
   _id: string;
   start: string;
   end: string;
+  months: number;
 }
 
 export interface DbProduct extends Document {

@@ -28,10 +28,6 @@
       "http://8016235491c6828f9cae-6b0d87410f7cc1525cc32b79408788c4.r96.cf2.rackcdn.com/2931/72579340_1.jpg"
     ],
     "durability": [
-      "63b598370e7740872e8c10c1",
-      {
-        "$oid": "645bff1d557954c755375ee0"
-      },
       {
         "$oid": "646780ba44238dc2b64430b0"
       },
@@ -210,7 +206,6 @@
       "http://images10.newegg.com/ProductImageCompressAll200/26-404-007-01.jpg"
     ],
     "durability": [
-      "63b598370e7740872e8c10c1",
       {
         "$oid": "645bff1d557954c755375edd"
       },
@@ -288,7 +283,6 @@
       "https://tshop.r10s.com/47d/a56/dedc/2444/c0e0/de69/f7c4/11a2e88d7cc454448913e3.jpg?_ex=512x512"
     ],
     "durability": [
-      "63b598370e7740872e8c10c1",
       {
         "$oid": "645bfed7557954c755375edb"
       },
@@ -350,7 +344,6 @@
       "https://i5.walmartimages.com/asr/c6b0b728-4491-4c6e-a765-9fa81ebaa598.91a49e1db92146af637425ba51a6c126.jpeg?odnHeight=450&odnWidth=450&odnBg=ffffff"
     ],
     "durability": [
-      "63b598370e7740872e8c10c1",
       {
         "$oid": "645bfed7557954c755375ed8"
       },

@@ -24,19 +24,20 @@ interface Props {
 }
 
 const ProductList: React.FC<Props> = ({ products }) => {
-  function getDurability(durability: Durability[] | string[]): string {
-    if (Array.isArray(durability)) {
-      for (const item of durability) {
-        if (typeof item === "object" && "start" in item) {
-          console.log("Durability Start:", item.start);
-          return item.start;
-        }
-      }
-    } else {
-      console.log("Durability:", durability);
+  function getAverageDurability(durability) {
+    const count = durability.length;
+    if (count > 0) {
+      const totalMonths = durability.reduce(
+        (total, item) => total + parseInt(item.months, 10),
+        0
+      );
+      console.log("Total Months:", totalMonths);
+      const averageMonths = totalMonths / count;
+      const years = Math.floor(averageMonths / 12);
+      const months = Math.round(averageMonths % 12);
+      return `${years}.${months} years`;
     }
-
-    return "";
+    return 0;
   }
 
   return (
@@ -59,9 +60,9 @@ const ProductList: React.FC<Props> = ({ products }) => {
               <ProductInfoRight>
                 <PriceTitle>Price:</PriceTitle>
                 <PriceValue>${product.lowest_recorded_price}</PriceValue>
-                <DurabilityTitle>Durability:</DurabilityTitle>
+                <DurabilityTitle>Durability (months):</DurabilityTitle>
                 <DurabilityValue>
-                  {getDurability(product.durability)}
+                  {getAverageDurability(product.durability)}{" "}
                 </DurabilityValue>
               </ProductInfoRight>
             </ProductInfo>

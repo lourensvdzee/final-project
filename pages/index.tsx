@@ -23,7 +23,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
   await dbConnect();
 
   const products = await DbProduct.find({}).populate("durability");
-  console.log("Products:", products);
+  // console.log("Products:", products);
 
   return { props: { products: JSON.parse(JSON.stringify(products)) } };
 };
