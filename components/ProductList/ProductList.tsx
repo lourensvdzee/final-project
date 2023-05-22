@@ -2,7 +2,7 @@
 \ */
 
 import React from "react";
-import { DbProduct } from "../../db/models/DbProduct";
+import { DbProduct, Durability } from "../../db/models/DbProduct";
 import {
   CardList,
   Card,
@@ -24,6 +24,21 @@ interface Props {
 }
 
 const ProductList: React.FC<Props> = ({ products }) => {
+  function getDurability(durability: Durability[] | string[]): string {
+    if (Array.isArray(durability)) {
+      for (const item of durability) {
+        if (typeof item === "object" && "start" in item) {
+          console.log("Durability Start:", item.start);
+          return item.start;
+        }
+      }
+    } else {
+      console.log("Durability:", durability);
+    }
+
+    return "";
+  }
+
   return (
     <div>
       <CardList>
@@ -45,7 +60,9 @@ const ProductList: React.FC<Props> = ({ products }) => {
                 <PriceTitle>Price:</PriceTitle>
                 <PriceValue>${product.lowest_recorded_price}</PriceValue>
                 <DurabilityTitle>Durability:</DurabilityTitle>
-                <DurabilityValue>2-3 years</DurabilityValue>
+                <DurabilityValue>
+                  {getDurability(product.durability)}
+                </DurabilityValue>
               </ProductInfoRight>
             </ProductInfo>
           </Card>

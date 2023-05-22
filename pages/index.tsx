@@ -4,13 +4,11 @@
 import React from "react";
 import { GetServerSideProps } from "next";
 import dbConnect from "../db/connect";
-import DbProduct, {
-  DbProduct as ProductInterface,
-} from "../db/models/DbProduct";
+import { DbProduct, Durability } from "../db/models/DbProduct";
 import ProductList from "../components/ProductList/ProductList";
 
 interface Props {
-  products: ProductInterface[];
+  products: DbProduct[];
 }
 
 export default function Home({ products }: Props) {
@@ -24,7 +22,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
   // Connect to the MongoDB database using Mongoose
   await dbConnect();
 
-  const products = await DbProduct.find({});
+  const products = await DbProduct.find({}).populate("durability");
+  console.log("Products:", products);
 
   return { props: { products: JSON.parse(JSON.stringify(products)) } };
 };
