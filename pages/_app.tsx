@@ -1,11 +1,9 @@
-/* pages/_app.tsx
-\ */
-
 import React from "react";
 import type { AppProps } from "next/app";
 import { SWRConfig } from "swr";
 import type { ReactElement } from "react";
 import Header from "../components/Header/Header";
+import SearchBar from "../components/SearchBar/SearchBar"; // Import the SearchBar component
 import "./GlobalStyles.css";
 
 type ComponentType = {
@@ -21,6 +19,7 @@ function MyApp({
   return (
     <SWRConfig>
       <Header />
+      <SearchBar /> {/* Render the SearchBar component */}
       <Component {...pageProps} />
     </SWRConfig>
   );

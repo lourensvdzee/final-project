@@ -31,7 +31,6 @@ const ProductList: React.FC<Props> = ({ products }) => {
         (total, item) => total + parseInt(item.months, 10),
         0
       );
-      console.log("Total Months:", totalMonths);
       const averageMonths = totalMonths / count;
       const years = Math.floor(averageMonths / 12);
       const months = Math.round(averageMonths % 12);
