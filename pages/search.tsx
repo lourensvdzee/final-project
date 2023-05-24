@@ -1,4 +1,4 @@
-/* pages/searchDatabase/searchDatabase.tsx
+/* pages/search.tsx
 \ */
 
 import React from "react";
