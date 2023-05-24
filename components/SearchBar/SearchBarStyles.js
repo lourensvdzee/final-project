@@ -5,11 +5,13 @@ import styled from "styled-components";
 
 export const Wrap = styled.div`
   width: 50%;
+  max-width: 500px;
   position: absolute;
-  top: 17%;
+/*   top: 17%; */
   left: 50%;
   transform: translate(-50%, -50%);
   margin: 20px auto;
+  margin-top: -42px;
   `;
 
 export const SearchForm = styled.form`
