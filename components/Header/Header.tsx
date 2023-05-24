@@ -5,7 +5,7 @@ import { HeaderWrapper, Title } from "./HeaderStyles";
 
 const Header = () => {
   return (
-    <Link href="/">
+    <Link href="/" style={{ textDecoration: "none", color: "black" }}>
       <HeaderWrapper>
         <Image
           src="/durable-icon.png"
