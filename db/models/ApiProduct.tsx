@@ -1,6 +1,7 @@
-/* db/models/ApiProduct.tsx */
+/* db/models/ApiProduct.tsx 
+\*/
 
-/* import fetch from "node-fetch";
+import fetch from "node-fetch";
 
 export interface ApiProduct {
   title: string;
@@ -52,4 +53,4 @@ export const fetchApiProducts = async (
     console.error("Error fetching API products:", error);
     throw error;
   }
-}; */
+};
