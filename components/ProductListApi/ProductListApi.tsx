@@ -4,8 +4,8 @@
 import React from "react";
 import { ApiProduct } from "../../db/models/ApiProduct";
 import {
-  CardList,
-  Card,
+  CardListApi,
+  CardApi,
   ProductName,
   ProductInfo,
   ImageWrapper,
@@ -24,9 +24,9 @@ interface Props {
 const ProductListApi: React.FC<Props> = ({ products }) => {
   return (
     <div>
-      <CardList>
+      <CardListApi>
         {products.map((product) => (
-          <Card key={product.ean}>
+          <CardApi key={product.ean}>
             <ProductName>{product.title}</ProductName>
             <ProductInfo>
               <ImageWrapper>
@@ -40,9 +40,9 @@ const ProductListApi: React.FC<Props> = ({ products }) => {
                 <PriceValue>${product.lowest_recorded_price}</PriceValue>
               </ProductInfoRight>
             </ProductInfo>
-          </Card>
+          </CardApi>
         ))}
-      </CardList>
+      </CardListApi>
     </div>
   );
 };

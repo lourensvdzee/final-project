@@ -5,7 +5,7 @@ import React from "react";
 import { DbProduct, Durability } from "../../db/models/DbProduct";
 import {
   CardList,
-  Card,
+  CardDb,
   ProductName,
   ProductInfo,
   ImageWrapper,
@@ -43,7 +43,7 @@ const ProductList: React.FC<Props> = ({ products }) => {
     <div>
       <CardList>
         {products.map((product) => (
-          <Card key={product._id}>
+          <CardDb key={product._id}>
             <ProductName>
               {product.title.length > 37
                 ? product.title.slice(0, 37) + "..."
@@ -65,7 +65,7 @@ const ProductList: React.FC<Props> = ({ products }) => {
                 </DurabilityValue>
               </ProductInfoRight>
             </ProductInfo>
-          </Card>
+          </CardDb>
         ))}
       </CardList>
     </div>

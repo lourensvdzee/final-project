@@ -50,6 +50,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
 export default SearchPage;
  */
 
+// pages/search.tsx
 import React from "react";
 import {
   GetServerSideProps,
@@ -61,6 +62,7 @@ import { DbProduct } from "../db/models/DbProduct";
 import { fetchApiProducts, ApiProduct } from "../db/models/ApiProduct";
 import ProductList from "../components/ProductList/ProductList";
 import ProductListApi from "../components/ProductListApi/ProductListApi";
+import dummyData from "../lib/dummydata.json"; // import dummy data
 
 interface Props {
   searchQuery: string;
@@ -70,30 +72,42 @@ interface Props {
 
 const SearchPage = ({ searchQuery, dbProducts, apiProducts }: Props) => {
   const isProductFound = dbProducts.length > 0;
-
   return (
     <div className="result-container">
       <h2 className="result-h2">Search Results for: {searchQuery}</h2>
-      {isProductFound && (
-        <>
-          <h3 className="result-h3">MongoDB Products</h3>
-          <ProductList products={dbProducts} />
-        </>
-      )}
+      {isProductFound && <ProductList products={dbProducts} />}
       {!isProductFound && apiProducts.length > 0 && (
         <>
-          <p className="result-text">
-            Product not found in Database. Continuing search outside of the
-            database.
-          </p>
-          <p className="result-text">Loading...</p>
+          <div className="result-text">
+            <p className="result-text-title">
+              Here is what we found outside of our database. Did you mean any of
+              these?
+            </p>
+            <ul className="result-text-list">
+              <li>1. Select the product ☝</li>
+              <li>2. Add your durability experience ⏲</li>
+              <li>3. Add it to the database 💾</li>
+              <li>4. Help the community making green choices! 🌳</li>
+            </ul>
+          </div>
           <ProductListApi products={apiProducts} />
         </>
       )}
       {!isProductFound && apiProducts.length === 0 && (
-        <p className="result-text">
-          Product not found. Please try another search query.
-        </p>
+        <>
+          <div className="result-text">
+            <p className="result-text-title">
+              THESE ARE DUMMY RESULTS. Did you mean any of these?
+            </p>
+            <ul className="result-text-list">
+              <li>1. Select the product ☝</li>
+              <li>2. Add your durability experience ⏲</li>
+              <li>3. Add it to the database 💾</li>
+              <li>4. Help the community making green choices! 🌳</li>
+            </ul>
+          </div>
+          <ProductListApi products={dummyData.items} />
+        </>
       )}
     </div>
   );
@@ -104,7 +118,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
 ): Promise<GetServerSidePropsResult<Props>> => {
   const searchQuery = context.query.query as string;
   await dbConnect();
-
   const dbProducts = await DbProduct.find({
     $or: [
       { ean: { $regex: searchQuery, $options: "i" } },
@@ -113,7 +126,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
       { description: { $regex: searchQuery, $options: "i" } },
     ],
   }).populate("durability");
-
   if (dbProducts.length > 0) {
     return {
       props: {
@@ -123,9 +135,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
       },
     };
   }
-
   const apiProducts: ApiProduct[] = await fetchApiProducts(searchQuery);
-
   return {
     props: {
       searchQuery,

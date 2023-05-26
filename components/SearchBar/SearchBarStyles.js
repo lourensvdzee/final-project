@@ -10,7 +10,7 @@ export const Wrap = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   margin: 20px auto;
-  margin-top: -42px;
+  margin-top: -32px;
   `;
 
 export const SearchForm = styled.form`

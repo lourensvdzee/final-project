@@ -14,7 +14,8 @@ export const CardList = styled.ul`
   padding: 0;
 `;
 
-export const Card = styled.li`
+export const CardDb = styled.li`
+  background: #d2e9e9;
   width: 320px;
   min-height: 200px;
   padding: 10px;

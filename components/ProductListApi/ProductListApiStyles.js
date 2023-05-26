@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CardList = styled.ul`
+export const CardListApi = styled.ul`
   list-style: none;
   color: #6f6f6f;
   display: flex;
@@ -9,9 +9,10 @@ export const CardList = styled.ul`
   gap:8px;
   margin: auto;
   padding: 0;
-`;
+  `;
 
-export const Card = styled.li`
+export const CardApi = styled.li`
+  background-color:#AFD3E2;
   width: 320px;
   min-height: 200px;
   padding: 10px;
