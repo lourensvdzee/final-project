@@ -37,6 +37,8 @@ export const ProductInfo = styled.div`
 export const ImageWrapper = styled.div`
   max-width:150px;
   max-height: 150px;
+  min-width:150px;
+  min-height: 150px;
   grid-column: 1 / span 2;
   grid-row: 1; 
   margin-top: 10px;
