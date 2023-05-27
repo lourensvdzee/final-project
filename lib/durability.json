@@ -1,0 +1,67 @@
+[{
+  "_id": {
+    "$oid": "646780ba44238dc2b64430b0"
+  },
+  "start": "May 2020",
+  "end": "November 2022"
+},{
+  "_id": {
+    "$oid": "646780ba44238dc2b64430b1"
+  },
+  "start": "December 2019",
+  "end": "May 2021"
+},{
+  "_id": {
+    "$oid": "645bff1d557954c755375edd"
+  },
+  "start": "April 2020",
+  "end": "April 2022"
+},{
+  "_id": {
+    "$oid": "646780ba44238dc2b64430b2"
+  },
+  "start": "May 2020",
+  "end": "May 2022"
+},{
+  "_id": {
+    "$oid": "646780ba44238dc2b64430b3"
+  },
+  "start": "December 2018",
+  "end": "May 2021"
+},{
+  "_id": {
+    "$oid": "645bfed7557954c755375edb"
+  },
+  "start": "September 2019",
+  "end": "April 2021"
+},{
+  "_id": {
+    "$oid": "646780ba44238dc2b64430b4"
+  },
+  "start": "May 2020",
+  "end": "November 2022"
+},{
+  "_id": {
+    "$oid": "646780ba44238dc2b64430b5"
+  },
+  "start": "December 2019",
+  "end": "May 2021"
+},{
+  "_id": {
+    "$oid": "645bfed7557954c755375ed8"
+  },
+  "start": "February 2019",
+  "end": "April 2022"
+},{
+  "_id": {
+    "$oid": "646780ba44238dc2b64430b6"
+  },
+  "start": "May 2020",
+  "end": "November 2021"
+},{
+  "_id": {
+    "$oid": "646780ba44238dc2b64430b7"
+  },
+  "start": "December 2017",
+  "end": "May 2021"
+}]
