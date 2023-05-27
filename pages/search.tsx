@@ -80,14 +80,17 @@ const SearchPage = ({ searchQuery, dbProducts, apiProducts }: Props) => {
         <>
           <div className="result-text">
             <p className="result-text-title">
-              Here is what we found outside of our database. Did you mean any of
-              these?
+              Here you find products we found outside of our database. Did you
+              mean any of these?
             </p>
             <ul className="result-text-list">
-              <li>1. Select the product ☝</li>
-              <li>2. Add your durability experience ⏲</li>
-              <li>3. Add it to the database 💾</li>
-              <li>4. Help the community making green choices! 🌳</li>
+              <li>1. Choose the product you were looking for ☝</li>
+              <li>2. Share your durability experience ⏲</li>
+              <li>3. Contribute to our database by adding it 💾</li>
+              <li>
+                4. Join the community in making environmentally-friendly
+                choices! 🌳
+              </li>
             </ul>
           </div>
           <ProductListApi products={apiProducts} />
@@ -100,10 +103,13 @@ const SearchPage = ({ searchQuery, dbProducts, apiProducts }: Props) => {
               THESE ARE DUMMY RESULTS. Did you mean any of these?
             </p>
             <ul className="result-text-list">
-              <li>1. Select the product ☝</li>
-              <li>2. Add your durability experience ⏲</li>
-              <li>3. Add it to the database 💾</li>
-              <li>4. Help the community making green choices! 🌳</li>
+              <li>1. Choose the product you were looking for ☝</li>
+              <li>2. Share your durability experience ⏲</li>
+              <li>3. Contribute to our database by adding it 💾</li>
+              <li>
+                4. Join the community in making environmentally-friendly
+                choices! 🌳
+              </li>
             </ul>
           </div>
           <ProductListApi products={dummyData.items} />
