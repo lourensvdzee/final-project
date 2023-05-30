@@ -1,18 +1,23 @@
 // components/AddProduct/AddProduct.tsx
 import { ApiProduct } from "../../db/models/ApiProduct";
-import React from "react";
+import React, { useState } from "react";
 
 interface Props {
   product: ApiProduct;
 }
 
 const AddProduct: React.FC<Props> = ({ product }) => {
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+
   const handleAddProduct = async () => {
     const productData = {
       title: product.title,
       ean: product.ean,
       images: product.images,
       lowest_recorded_price: product.lowest_recorded_price,
+      durabilityStart: startDate,
+      durabilityEnd: endDate,
     };
 
     try {
@@ -40,6 +45,24 @@ const AddProduct: React.FC<Props> = ({ product }) => {
     <div>
       <h2>{product.title}</h2>
       <img src={product.images[0]} alt="Product Image" />
+      <label>
+        Start Date:
+        <input
+          type="date"
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
+        />
+      </label>
+      <br />
+      <label>
+        End Date:
+        <input
+          type="date"
+          value={endDate}
+          onChange={(e) => setEndDate(e.target.value)}
+        />
+      </label>
+      <br />
       <button onClick={handleAddProduct}>Save</button>
     </div>
   );

@@ -1,9 +1,7 @@
-// pages/api/products/addProduct.tsx
-
-// pages/api/products/addProduct.tsx
+// pages/api/products/index.tsx
 
 import { NextApiRequest, NextApiResponse } from "next";
-import { DbProduct } from "../../../db/models/DbProduct";
+import { DbProduct, Durability } from "../../../db/models/DbProduct";
 import dbConnect from "../../../db/connect";
 
 const addProductHandler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -12,15 +10,31 @@ const addProductHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
-  const { title, ean, images, lowest_recorded_price } = req.body;
+  const {
+    title,
+    ean,
+    images,
+    lowest_recorded_price,
+    durabilityStart,
+    durabilityEnd,
+  } = req.body;
 
   try {
     await dbConnect();
+
+    const durability = new Durability({
+      start: durabilityStart,
+      end: durabilityEnd,
+    });
+
+    const savedDurability = await durability.save();
+
     const product = new DbProduct({
       title,
       ean,
       images,
       lowest_recorded_price,
+      durability: [savedDurability._id],
     });
 
     console.log("Product:", product);

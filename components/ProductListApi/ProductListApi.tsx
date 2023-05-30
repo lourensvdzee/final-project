@@ -1,5 +1,4 @@
-/* components/ProductListApi/ProductListApi.tsx
-\ */
+// components/ProductListApi/ProductListApi.tsx
 
 import React, { useState } from "react";
 import { ApiProduct } from "../../db/models/ApiProduct";

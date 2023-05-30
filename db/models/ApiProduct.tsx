@@ -1,5 +1,4 @@
-/* db/models/ApiProduct.tsx 
-\*/
+// db/models/ApiProduct.tsx
 
 import fetch from "node-fetch";
 

@@ -1,5 +1,4 @@
-/* components/ProductList/ProductList.tsx
-\ */
+// components/ProductList/ProductList.tsx
 
 import React from "react";
 import { DbProduct, Durability } from "../../db/models/DbProduct";

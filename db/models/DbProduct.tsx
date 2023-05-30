@@ -1,6 +1,3 @@
-/* db/models/DbProducts.tsx
-\ */
-
 import mongoose, { Document } from "mongoose";
 
 export interface Durability {
@@ -22,6 +19,7 @@ const { Schema } = mongoose;
 
 const durabilitySchema = new Schema({
   start: { type: String, required: true },
+  end: { type: String, required: true },
 });
 
 const dbProductSchema = new Schema({
