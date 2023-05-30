@@ -16,6 +16,7 @@ import {
   PriceTitle,
   PriceValue,
 } from "./ProductListApiStyles";
+import AddProduct from "../AddProduct/AddProduct";
 
 interface Props {
   products: ApiProduct[];
@@ -26,6 +27,9 @@ const ProductListApi: React.FC<Props> = ({ products }) => {
   const [noWorkingImages, setNoWorkingImages] = useState<
     Record<string, boolean>
   >({});
+  const [selectedProduct, setSelectedProduct] = useState<ApiProduct | null>(
+    null
+  );
 
   const handleImageError = (product: ApiProduct) => {
     console.log(`Image failed to load for product with EAN: ${product.ean}`);
@@ -41,6 +45,14 @@ const ProductListApi: React.FC<Props> = ({ products }) => {
       );
       setNoWorkingImages((prev) => ({ ...prev, [product.ean]: true }));
     }
+  };
+
+  const handleAddProduct = (product: ApiProduct) => {
+    setSelectedProduct(product);
+  };
+
+  const handleCancelAddProduct = () => {
+    setSelectedProduct(null);
   };
 
   return (
@@ -76,10 +88,19 @@ const ProductListApi: React.FC<Props> = ({ products }) => {
                   <PriceValue>${product.lowest_recorded_price}</PriceValue>
                 </ProductInfoRight>
               </ProductInfo>
+              <button onClick={() => handleAddProduct(product)}>
+                Share durability + Add to database
+              </button>
             </CardApi>
           );
         })}
       </CardListApi>
+      {selectedProduct && (
+        <div>
+          <AddProduct product={selectedProduct} />
+          <button onClick={handleCancelAddProduct}>Cancel</button>
+        </div>
+      )}
     </div>
   );
 };
