@@ -15,7 +15,7 @@ import {
   PriceTitle,
   PriceValue,
 } from "./ProductListApiStyles";
-import AddProduct from "../AddProduct/AddProduct";
+import Overlay from "../Overlay/Overlay";
 
 interface Props {
   products: ApiProduct[];
@@ -29,6 +29,7 @@ const ProductListApi: React.FC<Props> = ({ products }) => {
   const [selectedProduct, setSelectedProduct] = useState<ApiProduct | null>(
     null
   );
+  const [showOverlay, setShowOverlay] = useState(false);
 
   const handleImageError = (product: ApiProduct) => {
     console.log(`Image failed to load for product with EAN: ${product.ean}`);
@@ -48,10 +49,20 @@ const ProductListApi: React.FC<Props> = ({ products }) => {
 
   const handleAddProduct = (product: ApiProduct) => {
     setSelectedProduct(product);
+    handleShowOverlay();
   };
 
   const handleCancelAddProduct = () => {
     setSelectedProduct(null);
+    handleHideOverlay();
+  };
+
+  const handleShowOverlay = () => {
+    setShowOverlay(true);
+  };
+
+  const handleHideOverlay = () => {
+    setShowOverlay(false);
   };
 
   return (
@@ -94,11 +105,8 @@ const ProductListApi: React.FC<Props> = ({ products }) => {
           );
         })}
       </CardListApi>
-      {selectedProduct && (
-        <div>
-          <AddProduct product={selectedProduct} />
-          <button onClick={handleCancelAddProduct}>Cancel</button>
-        </div>
+      {selectedProduct && showOverlay && (
+        <Overlay product={selectedProduct} onCancel={handleHideOverlay} />
       )}
     </div>
   );
