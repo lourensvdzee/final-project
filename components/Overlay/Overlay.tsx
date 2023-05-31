@@ -1,41 +1,19 @@
 // components/Overlay/Overlay.tsx
 
+// components/Overlay/Overlay.tsx
+
 import React, { useState } from "react";
-import styled from "styled-components";
 import { ApiProduct } from "../../db/models/ApiProduct";
 import MonthYearInput from "../MonthYearInput/MonthYearInput";
-
-const Container = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-`;
-
-const Content = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  max-width: 400px;
-  background-color: white;
-  padding: 16px;
-`;
-
-const Title = styled.h2`
-  margin-top: 0;
-`;
-
-const Label = styled.label`
-  display: block;
-`;
-
-const Button = styled.button`
-  margin-top: 8px;
-`;
+import {
+  Container,
+  Content,
+  Title,
+  Label,
+  Button,
+  ProductImage,
+  ProductInfo,
+} from "./OverlayStyles";
 
 interface Props {
   product: ApiProduct;
@@ -54,6 +32,10 @@ const Overlay: React.FC<Props> = ({ product, onCancel }) => {
       lowest_recorded_price: product.lowest_recorded_price,
       durabilityStart: `${startDate}-01`,
       durabilityEnd: `${endDate}-01`,
+      brand: product.brand,
+      model: product.model,
+      description: product.description,
+      color: product.color,
     };
 
     try {
@@ -80,6 +62,13 @@ const Overlay: React.FC<Props> = ({ product, onCancel }) => {
     <Container>
       <Content>
         <Title>{product.title}</Title>
+        <ProductImage src={product.images[0]} alt="Product Image" />
+        <ProductInfo>
+          <Label>Brand: {product.brand}</Label>
+          <Label>Model: {product.model}</Label>
+          <Label>Description: {product.description}</Label>
+          <Label>Color: {product.color}</Label>
+        </ProductInfo>
         <Label>
           Start Date:
           <MonthYearInput value={startDate} onChange={setStartDate} />

@@ -18,6 +18,10 @@ const addProductHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     lowest_recorded_price,
     durabilityStart,
     durabilityEnd,
+    brand,
+    model,
+    description,
+    color,
   } = req.body;
 
   try {
@@ -46,6 +50,10 @@ const addProductHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       images,
       lowest_recorded_price,
       durability: [savedDurability._id],
+      brand,
+      model,
+      description,
+      color,
     });
 
     console.log("Product:", product);

@@ -15,6 +15,10 @@ export interface DbProduct extends Document {
   images: string[];
   lowest_recorded_price: number;
   durability: Durability[];
+  brand: string;
+  model: string;
+  description: string;
+  color: string;
 }
 
 const { Schema } = mongoose;
@@ -35,6 +39,10 @@ const dbProductSchema = new Schema({
     ref: "Durability",
     required: true,
   },
+  brand: { type: String, required: true },
+  model: { type: String, required: true },
+  description: { type: String },
+  color: { type: String },
 });
 
 const Durability =

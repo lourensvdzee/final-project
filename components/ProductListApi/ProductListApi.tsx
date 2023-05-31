@@ -52,11 +52,6 @@ const ProductListApi: React.FC<Props> = ({ products }) => {
     handleShowOverlay();
   };
 
-  const handleCancelAddProduct = () => {
-    setSelectedProduct(null);
-    handleHideOverlay();
-  };
-
   const handleShowOverlay = () => {
     setShowOverlay(true);
   };
@@ -96,11 +91,11 @@ const ProductListApi: React.FC<Props> = ({ products }) => {
                 <ProductInfoRight>
                   <PriceTitle>Price:</PriceTitle>
                   <PriceValue>${product.lowest_recorded_price}</PriceValue>
+                  <button onClick={() => handleAddProduct(product)}>
+                    Share durability + Add to database
+                  </button>
                 </ProductInfoRight>
               </ProductInfo>
-              <button onClick={() => handleAddProduct(product)}>
-                Share durability + Add to database
-              </button>
             </CardApi>
           );
         })}

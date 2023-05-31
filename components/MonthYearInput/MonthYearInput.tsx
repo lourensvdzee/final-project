@@ -14,13 +14,19 @@ const MonthYearInput: React.FC<{
   const handleMonthChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newDate = date.set({ month: parseInt(event.target.value) });
     setDate(newDate);
-    onChange(newDate.toISODate().slice(0, 7));
+    const isoDate = newDate.toISODate();
+    if (isoDate) {
+      onChange(isoDate.slice(0, 7));
+    }
   };
 
   const handleYearChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newDate = date.set({ year: parseInt(event.target.value) });
     setDate(newDate);
-    onChange(newDate.toISODate().slice(0, 7));
+    const isoDate = newDate.toISODate();
+    if (isoDate) {
+      onChange(isoDate.slice(0, 7));
+    }
   };
 
   return (
