@@ -23,9 +23,17 @@ const addProductHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     await dbConnect();
 
+    const start = new Date(durabilityStart);
+    const end = new Date(durabilityEnd);
+    const months =
+      (end.getFullYear() - start.getFullYear()) * 12 +
+      end.getMonth() -
+      start.getMonth();
+
     const durability = new Durability({
       start: new Date(durabilityStart),
       end: new Date(durabilityEnd),
+      months,
     });
 
     console.log("Durability:", durability);

@@ -22,6 +22,7 @@ const { Schema } = mongoose;
 const durabilitySchema = new Schema({
   start: { type: Date, required: true },
   end: { type: Date, required: true },
+  months: { type: Number, required: true },
 });
 
 const dbProductSchema = new Schema({
