@@ -1,11 +1,11 @@
-// db/models/ApiProduct.tsx
+// db/models/DbProduct.tsx
 
 import mongoose, { Document } from "mongoose";
 
 export interface Durability {
   _id: string;
-  start: string;
-  end: string;
+  start: Date;
+  end: Date;
   months: number;
 }
 
@@ -20,8 +20,8 @@ export interface DbProduct extends Document {
 const { Schema } = mongoose;
 
 const durabilitySchema = new Schema({
-  start: { type: String, required: true },
-  end: { type: String, required: true },
+  start: { type: Date, required: true },
+  end: { type: Date, required: true },
 });
 
 const dbProductSchema = new Schema({

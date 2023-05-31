@@ -5,6 +5,7 @@ import { DbProduct, Durability } from "../../../db/models/DbProduct";
 import dbConnect from "../../../db/connect";
 
 const addProductHandler = async (req: NextApiRequest, res: NextApiResponse) => {
+  console.log("Request Body:", req.body);
   if (req.method !== "POST") {
     res.status(400).json({ message: "Invalid request method." });
     return;
@@ -23,9 +24,11 @@ const addProductHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     await dbConnect();
 
     const durability = new Durability({
-      start: durabilityStart,
-      end: durabilityEnd,
+      start: new Date(durabilityStart),
+      end: new Date(durabilityEnd),
     });
+
+    console.log("Durability:", durability);
 
     const savedDurability = await durability.save();
 
