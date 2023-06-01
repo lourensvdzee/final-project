@@ -1,7 +1,5 @@
 // components/Overlay/Overlay.tsx
 
-// components/Overlay/Overlay.tsx
-
 import React, { useState } from "react";
 import { ApiProduct } from "../../db/models/ApiProduct";
 import MonthYearInput from "../MonthYearInput/MonthYearInput";
