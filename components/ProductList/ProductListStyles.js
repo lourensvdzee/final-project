@@ -1,5 +1,4 @@
-/* components/ProductList/ProductListStyles.js
-\ */
+// components/ProductList/ProductListStyles.js
 
 import styled from 'styled-components';
 
@@ -21,7 +20,11 @@ export const CardDb = styled.li`
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
-  `;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+`;
 
 export const ProductName = styled.h3`
   margin: 0;

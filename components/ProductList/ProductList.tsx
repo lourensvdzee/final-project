@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { getAverageDurability } from "../../components/AverageDurability/AverageDurability";
 import { DbProduct, Durability } from "../../db/models/DbProduct";
 import {
   CardList,
@@ -24,31 +25,15 @@ interface Props {
 }
 
 const ProductList: React.FC<Props> = ({ products }) => {
-  function getAverageDurability(durability) {
-    const count = durability.length;
-    if (count > 0) {
-      const totalMonths = durability.reduce((total, item) => {
-        const startDate = new Date(item.start);
-        const endDate = new Date(item.end);
-        const months =
-          (endDate.getFullYear() - startDate.getFullYear()) * 12 +
-          endDate.getMonth() -
-          startDate.getMonth();
-        return total + months;
-      }, 0);
-      const averageMonths = totalMonths / count;
-      const years = Math.floor(averageMonths / 12);
-      const months = Math.round(averageMonths % 12);
-      return `${years}.${months} years`;
-    }
-    return 0;
-  }
-
   return (
     <div>
       <CardList>
         {products.map((product) => (
-          <Link href={`/product/${product._id}`} key={product._id}>
+          <Link
+            href={`/product/${product._id}`}
+            key={product._id}
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
             <div>
               <CardDb key={product._id}>
                 <ProductName>

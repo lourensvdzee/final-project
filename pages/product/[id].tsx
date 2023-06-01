@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { GetServerSideProps } from "next";
 import dbConnect from "../../db/connect";
 import { DbProduct } from "../../db/models/DbProduct";
+import { getAverageDurability } from "../../components/AverageDurability/AverageDurability";
 import {
   CardDb,
   ProductWrapper,
@@ -11,9 +12,13 @@ import {
   ImageWrapper,
   ProductImage,
   CarouselButton,
+  ImageCounter,
   ProductInfoWrapper,
   ProductInfoTitle,
   ProductInfoText,
+  DurabilityWrapper,
+  DurabilityTitle,
+  DurabilityValue,
   OffersWrapper,
   OffersTitle,
   OffersList,
@@ -26,29 +31,47 @@ interface Props {
 
 export default function ProductPage({ product }: Props) {
   const [imageIndex, setImageIndex] = useState(0);
+  const [images, setImages] = useState(product.images);
 
   const handlePrevImage = () => {
     setImageIndex((prevIndex) =>
-      prevIndex === 0 ? product.images.length - 1 : prevIndex - 1
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
 
   const handleNextImage = () => {
     setImageIndex((prevIndex) =>
-      prevIndex === product.images.length - 1 ? 0 : prevIndex + 1
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
+
+  const handleImageError = (index: number) => {
+    setImages((prevImages) => prevImages.filter((_, i) => i !== index));
+    if (index === imageIndex) {
+      setImageIndex(0);
+    }
+  };
+
   return (
     <CardDb>
       <ProductWrapper>
         <ProductTitle>{product.title}</ProductTitle>
         <ImageWrapper>
-          {product.images.length > 1 && (
+          {images.length > 1 && (
             <CarouselButton onClick={handlePrevImage}>{"<"}</CarouselButton>
           )}
-          <ProductImage src={product.images[imageIndex]} alt="Product Image" />
-          {product.images.length > 1 && (
-            <CarouselButton onClick={handleNextImage}>{">"}</CarouselButton>
+          <ProductImage
+            src={images[imageIndex]}
+            alt="Product Image"
+            onError={() => handleImageError(imageIndex)}
+          />
+          {images.length > 1 && (
+            <>
+              <CarouselButton onClick={handleNextImage}>{">"}</CarouselButton>
+              <ImageCounter>
+                {imageIndex + 1}/{images.length}
+              </ImageCounter>
+            </>
           )}
         </ImageWrapper>
         <ProductInfoWrapper>
@@ -61,6 +84,12 @@ export default function ProductPage({ product }: Props) {
           <ProductInfoTitle>Color:</ProductInfoTitle>
           <ProductInfoText>{product.color}</ProductInfoText>
         </ProductInfoWrapper>
+        <DurabilityWrapper>
+          <DurabilityTitle>Durability (months):</DurabilityTitle>
+          <DurabilityValue>
+            {getAverageDurability(product.durability)}
+          </DurabilityValue>
+        </DurabilityWrapper>
         <OffersWrapper>
           <OffersTitle>Offers:</OffersTitle>
           <OffersList>

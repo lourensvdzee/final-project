@@ -40,11 +40,17 @@ export const ImageWrapper = styled.div`
 
 export const CarouselButton = styled.button`
     position: absolute;
-    top: calc(97% - 20px);
+    top: calc(93% - 20px);
     border-radius: 10px;
     border: 1px solid #ccc;
     box-shadow: 0 0 10px 0 #ccc;
     `;
+
+export const ImageCounter = styled.span`
+ position: absolute;
+ bottom: 2px;
+ right: calc(50% -20px);
+`;
 
 export const ProductImage = styled.img`
   max-width: 75%;
@@ -67,6 +73,22 @@ export const ProductInfoTitle = styled.h3`
 
 export const ProductInfoText = styled.p`
   font-size: smaller;
+`;
+
+export const DurabilityWrapper = styled.p`
+border-radius: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px 0 #ccc;
+  padding: 10px;
+`;
+
+export const DurabilityTitle = styled.h3`
+  font-weight: bold;
+`;
+
+export const DurabilityValue = styled.p`
+font-size: smaller;
 `;
 
 export const OffersWrapper = styled.div`
