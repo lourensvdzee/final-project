@@ -1,6 +1,7 @@
 // components/ProductList/ProductList.tsx
 
 import React from "react";
+import Link from "next/link";
 import { DbProduct, Durability } from "../../db/models/DbProduct";
 import {
   CardList,
@@ -47,29 +48,33 @@ const ProductList: React.FC<Props> = ({ products }) => {
     <div>
       <CardList>
         {products.map((product) => (
-          <CardDb key={product._id}>
-            <ProductName>
-              {product.title.length > 37
-                ? product.title.slice(0, 37) + "..."
-                : product.title}
-            </ProductName>
-            <ProductInfo>
-              <ImageWrapper>
-                <Image src={product.images[0]} alt="Product Image" />
-              </ImageWrapper>
-              <EanWrapper>
-                <EAN>EAN: {product.ean}</EAN>
-              </EanWrapper>
-              <ProductInfoRight>
-                <PriceTitle>Price:</PriceTitle>
-                <PriceValue>${product.lowest_recorded_price}</PriceValue>
-                <DurabilityTitle>Durability (months):</DurabilityTitle>
-                <DurabilityValue>
-                  {getAverageDurability(product.durability)}{" "}
-                </DurabilityValue>
-              </ProductInfoRight>
-            </ProductInfo>
-          </CardDb>
+          <Link href={`/product/${product._id}`} key={product._id}>
+            <div>
+              <CardDb key={product._id}>
+                <ProductName>
+                  {product.title.length > 37
+                    ? product.title.slice(0, 37) + "..."
+                    : product.title}
+                </ProductName>
+                <ProductInfo>
+                  <ImageWrapper>
+                    <Image src={product.images[0]} alt="Product Image" />
+                  </ImageWrapper>
+                  <EanWrapper>
+                    <EAN>EAN: {product.ean}</EAN>
+                  </EanWrapper>
+                  <ProductInfoRight>
+                    <PriceTitle>Price:</PriceTitle>
+                    <PriceValue>${product.lowest_recorded_price}</PriceValue>
+                    <DurabilityTitle>Durability (months):</DurabilityTitle>
+                    <DurabilityValue>
+                      {getAverageDurability(product.durability)}{" "}
+                    </DurabilityValue>
+                  </ProductInfoRight>
+                </ProductInfo>
+              </CardDb>
+            </div>
+          </Link>
         ))}
       </CardList>
     </div>

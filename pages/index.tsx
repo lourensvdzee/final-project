@@ -1,5 +1,4 @@
-/* pages/index.tsx
-\ */
+// pages/index.tsx
 
 import React from "react";
 import { GetServerSideProps } from "next";
