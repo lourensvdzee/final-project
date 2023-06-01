@@ -1,5 +1,4 @@
-/* db/connect.js 
-\ */
+// db/connect.js 
 
 import mongoose from 'mongoose'
 

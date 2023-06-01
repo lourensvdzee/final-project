@@ -1,12 +1,11 @@
-/* db/models/DbProducts.tsx
-\ */
+// db/models/DbProduct.tsx
 
 import mongoose, { Document } from "mongoose";
 
 export interface Durability {
   _id: string;
-  start: string;
-  end: string;
+  start: Date;
+  end: Date;
   months: number;
 }
 
@@ -16,12 +15,18 @@ export interface DbProduct extends Document {
   images: string[];
   lowest_recorded_price: number;
   durability: Durability[];
+  brand: string;
+  model: string;
+  description: string;
+  color: string;
 }
 
 const { Schema } = mongoose;
 
 const durabilitySchema = new Schema({
-  start: { type: String, required: true },
+  start: { type: Date, required: true },
+  end: { type: Date, required: true },
+  months: { type: Number, required: true },
 });
 
 const dbProductSchema = new Schema({
@@ -34,6 +39,10 @@ const dbProductSchema = new Schema({
     ref: "Durability",
     required: true,
   },
+  brand: { type: String, required: true },
+  model: { type: String, required: true },
+  description: { type: String },
+  color: { type: String },
 });
 
 const Durability =

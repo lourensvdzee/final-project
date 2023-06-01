@@ -1,5 +1,4 @@
-/* db/models/ApiProduct.tsx 
-\*/
+// db/models/ApiProduct.tsx
 
 import fetch from "node-fetch";
 
@@ -8,6 +7,10 @@ export interface ApiProduct {
   ean: string;
   images: string[];
   lowest_recorded_price: number;
+  brand: string;
+  model: string;
+  description: string;
+  color: string;
 }
 
 interface ApiItem {
@@ -17,6 +20,10 @@ interface ApiItem {
   offers: {
     price: number;
   }[];
+  brand: string;
+  model: string;
+  description: string;
+  color: string;
 }
 
 interface ApiResponse {
@@ -43,6 +50,10 @@ export const fetchApiProducts = async (
         ean: item.ean,
         images: item.images,
         lowest_recorded_price: item.offers[0]?.price || 0,
+        brand: item.brand,
+        model: item.model,
+        description: item.description,
+        color: item.color,
       }));
 
       return apiProducts;

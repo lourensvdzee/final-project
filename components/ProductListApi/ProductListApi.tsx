@@ -1,5 +1,4 @@
-/* components/ProductListApi/ProductListApi.tsx
-\ */
+// components/ProductListApi/ProductListApi.tsx
 
 import React, { useState } from "react";
 import { ApiProduct } from "../../db/models/ApiProduct";
@@ -16,6 +15,7 @@ import {
   PriceTitle,
   PriceValue,
 } from "./ProductListApiStyles";
+import Overlay from "../Overlay/Overlay";
 
 interface Props {
   products: ApiProduct[];
@@ -26,6 +26,10 @@ const ProductListApi: React.FC<Props> = ({ products }) => {
   const [noWorkingImages, setNoWorkingImages] = useState<
     Record<string, boolean>
   >({});
+  const [selectedProduct, setSelectedProduct] = useState<ApiProduct | null>(
+    null
+  );
+  const [showOverlay, setShowOverlay] = useState(false);
 
   const handleImageError = (product: ApiProduct) => {
     console.log(`Image failed to load for product with EAN: ${product.ean}`);
@@ -41,6 +45,19 @@ const ProductListApi: React.FC<Props> = ({ products }) => {
       );
       setNoWorkingImages((prev) => ({ ...prev, [product.ean]: true }));
     }
+  };
+
+  const handleAddProduct = (product: ApiProduct) => {
+    setSelectedProduct(product);
+    handleShowOverlay();
+  };
+
+  const handleShowOverlay = () => {
+    setShowOverlay(true);
+  };
+
+  const handleHideOverlay = () => {
+    setShowOverlay(false);
   };
 
   return (
@@ -74,12 +91,18 @@ const ProductListApi: React.FC<Props> = ({ products }) => {
                 <ProductInfoRight>
                   <PriceTitle>Price:</PriceTitle>
                   <PriceValue>${product.lowest_recorded_price}</PriceValue>
+                  <button onClick={() => handleAddProduct(product)}>
+                    Share durability + Add to database
+                  </button>
                 </ProductInfoRight>
               </ProductInfo>
             </CardApi>
           );
         })}
       </CardListApi>
+      {selectedProduct && showOverlay && (
+        <Overlay product={selectedProduct} onCancel={handleHideOverlay} />
+      )}
     </div>
   );
 };
