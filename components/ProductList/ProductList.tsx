@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { getAverageDurability } from "../../components/AverageDurability/AverageDurability";
+import { getAverageDurability } from "../../utils/averageDurability";
 import { DbProduct, Durability } from "../../db/models/DbProduct";
 import {
   CardList,
