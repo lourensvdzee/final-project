@@ -11,7 +11,7 @@ import {
   Button,
   ProductImage,
   ProductInfo,
-} from "./OverlayStyles";
+} from "./OverlayProductListStyles";
 
 interface Props {
   product: ApiProduct;

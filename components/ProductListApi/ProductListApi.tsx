@@ -15,7 +15,7 @@ import {
   PriceTitle,
   PriceValue,
 } from "./ProductListApiStyles";
-import Overlay from "../Overlay/Overlay";
+import Overlay from "../OverlayProductList/OverlayProductList";
 
 interface Props {
   products: ApiProduct[];

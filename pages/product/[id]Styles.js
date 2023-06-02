@@ -1,4 +1,4 @@
-// pages/[id]Styles.js
+// pages/product/[id]Styles.js
 
 import styled from "styled-components";
 
@@ -16,7 +16,6 @@ export const CardDb = styled.li`
 `;
 
 export const ProductWrapper = styled.div`
-
 `;
 
 export const ProductTitle = styled.h2`
@@ -75,8 +74,12 @@ export const ProductInfoText = styled.p`
   font-size: smaller;
 `;
 
-export const DurabilityWrapper = styled.p`
-border-radius: 10px;
+export const DurabilityWrapper = styled.div`
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
   background-color: #fff;
   border: 1px solid #ccc;
   box-shadow: 0 0 10px 0 #ccc;
@@ -85,11 +88,32 @@ border-radius: 10px;
 
 export const DurabilityTitle = styled.h3`
   font-weight: bold;
+  margin-right: auto;
 `;
 
-export const DurabilityValue = styled.p`
-font-size: smaller;
+export const DurabilityValue = styled.h1`
+  margin-left: 0px;
+  margin-top: -5px;
+
 `;
+
+export const DurabilityButton = styled.button`
+  margin-top: -5px;
+  border-radius: 7px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px 0 #ccc;
+  padding: 5px;
+
+  &:hover {
+    background-color: lightgray;
+  }
+
+  &:active {
+    box-shadow: inset 0px 0px 5px #c1c1c1;
+    transform: translateY(2px);
+  }
+`;
+
 
 export const OffersWrapper = styled.div`
   border-radius: 10px;
@@ -110,6 +134,7 @@ export const OffersList = styled.ul`
   padding: 0;
   display: flex;
   flex-wrap: wrap;
+  
 `;
 
 export const OfferItem = styled.li`

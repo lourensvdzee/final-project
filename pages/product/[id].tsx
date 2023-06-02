@@ -1,10 +1,12 @@
-// pages/[id].tsx
+// pages/product/[id].tsx
 
 import React, { useState } from "react";
 import { GetServerSideProps } from "next";
 import dbConnect from "../../db/connect";
 import { DbProduct, Durability } from "../../db/models/DbProduct";
 import { getAverageDurability } from "../../components/AverageDurability/AverageDurability";
+import Image from "next/image";
+import AddDurability from "../../components/OverlayProduct/OverlayProduct";
 import {
   CardDb,
   ProductWrapper,
@@ -19,6 +21,7 @@ import {
   DurabilityWrapper,
   DurabilityTitle,
   DurabilityValue,
+  DurabilityButton,
   OffersWrapper,
   OffersTitle,
   OffersList,
@@ -33,6 +36,7 @@ interface Props {
 export default function ProductPage({ product }: Props) {
   const [imageIndex, setImageIndex] = useState(0);
   const [images, setImages] = useState(product.images);
+  const [showAddDurability, setShowAddDurability] = useState(false);
 
   const handlePrevImage = () => {
     setImageIndex((prevIndex) =>
@@ -82,6 +86,17 @@ export default function ProductPage({ product }: Props) {
     return ""; // return an empty string if no matching logo is found
   }
 
+  const handleAddDurability = async (
+    durabilityStart: string,
+    durabilityEnd: string
+  ) => {
+    // Send a request to your API to update the product in the database with the new durability experience
+    // ...
+
+    // Hide the AddDurability component
+    setShowAddDurability(false);
+  };
+
   return (
     <CardDb>
       <ProductWrapper>
@@ -117,8 +132,11 @@ export default function ProductPage({ product }: Props) {
         <DurabilityWrapper>
           <DurabilityTitle>Durability:</DurabilityTitle>
           <DurabilityValue>
-            {getAverageDurability(product.durability)}{" "}
+            {getAverageDurability(product.durability)}
           </DurabilityValue>
+          <DurabilityButton onClick={() => setShowAddDurability(true)}>
+            Add your durability experience!
+          </DurabilityButton>
         </DurabilityWrapper>
         <OffersWrapper>
           <OffersTitle>Offers:</OffersTitle>
@@ -134,9 +152,11 @@ export default function ProductPage({ product }: Props) {
                     rel="noopener noreferrer"
                   >
                     <div>
-                      <img
+                      <Image
                         src={getLogoPath(offer.domain)}
                         alt={`${offer.merchant} logo`}
+                        width={50} // specify the width
+                        height={50} // specify the height
                       />
                       <OfferPrice>${offer.price}</OfferPrice>
                     </div>
@@ -145,6 +165,14 @@ export default function ProductPage({ product }: Props) {
               ))}
           </OffersList>
         </OffersWrapper>
+
+        {showAddDurability && (
+          <AddDurability
+            product={product}
+            onCancel={() => setShowAddDurability(false)}
+            onSave={handleAddDurability}
+          />
+        )}
       </ProductWrapper>
     </CardDb>
   );
