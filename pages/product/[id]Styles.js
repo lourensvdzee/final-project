@@ -37,18 +37,28 @@ export const ImageWrapper = styled.div`
   box-shadow: 0 0 10px 0 #ccc;
   `;
 
-export const CarouselButton = styled.button`
-    position: absolute;
-    top: calc(93% - 20px);
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px 0 #ccc;
-    `;
+export const CarouselButtonLeft = styled.button`
+ position: absolute;
+ bottom: 15px;
+ left: calc(50% - 40px);
+ border-radius: 10px;
+ border: 1px solid #ccc;
+ box-shadow: 0 0 10px 0 #ccc;
+`;
+
+export const CarouselButtonRight = styled.button`
+ position: absolute;
+ bottom: 15px;
+ right: calc(50% - 40px);
+ border-radius: 10px;
+ border: 1px solid #ccc;
+ box-shadow: 0 0 10px 0 #ccc;
+`;
 
 export const ImageCounter = styled.span`
  position: absolute;
- bottom: 2px;
- right: calc(50% -20px);
+ bottom: 15px;
+ left: calc(50% -20px);
 `;
 
 export const ProductImage = styled.img`

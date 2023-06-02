@@ -4,16 +4,23 @@ import React, { useState } from "react";
 import { GetServerSideProps } from "next";
 import dbConnect from "../../db/connect";
 import { DbProduct, Durability } from "../../db/models/DbProduct";
-import { getAverageDurability } from "../../components/AverageDurability/AverageDurability";
+import { getAverageDurability } from "../../utils/averageDurability";
 import Image from "next/image";
 import AddDurability from "../../components/OverlayProduct/OverlayProduct";
+import { getLogoPath } from "../../utils/getLogoPath";
+import {
+  handlePrevImage,
+  handleNextImage,
+  handleImageError,
+} from "../../utils/imageHandlers";
 import {
   CardDb,
   ProductWrapper,
   ProductTitle,
   ImageWrapper,
   ProductImage,
-  CarouselButton,
+  CarouselButtonLeft,
+  CarouselButtonRight,
   ImageCounter,
   ProductInfoWrapper,
   ProductInfoTitle,
@@ -38,54 +45,6 @@ export default function ProductPage({ product }: Props) {
   const [images, setImages] = useState(product.images);
   const [showAddDurability, setShowAddDurability] = useState(false);
 
-  const handlePrevImage = () => {
-    setImageIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  };
-
-  const handleNextImage = () => {
-    setImageIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const handleImageError = (index: number) => {
-    setImages((prevImages) => prevImages.filter((_, i) => i !== index));
-    if (index === imageIndex) {
-      setImageIndex(0);
-    }
-  };
-
-  function getLogoPath(domain: string) {
-    const domainParts = domain.split(".");
-    const logoFileNames = [
-      "indigo",
-      "adorama",
-      "bestbuy",
-      "sears",
-      "argos",
-      "walmart",
-      "rakuten",
-      "newegg",
-      "target",
-      "brookstone",
-      "pricefalls",
-      "macys",
-      "guitarcenter",
-      "musiciansfriend",
-      "onbuy",
-    ];
-
-    for (const part of domainParts) {
-      if (logoFileNames.includes(part)) {
-        return `/logos/${part}.png`;
-      }
-    }
-
-    return ""; // return an empty string if no matching logo is found
-  }
-
   const handleAddDurability = async (
     durabilityStart: string,
     durabilityEnd: string
@@ -103,16 +62,29 @@ export default function ProductPage({ product }: Props) {
         <ProductTitle>{product.title}</ProductTitle>
         <ImageWrapper>
           {images.length > 1 && (
-            <CarouselButton onClick={handlePrevImage}>{"<"}</CarouselButton>
+            <CarouselButtonLeft
+              onClick={() => handlePrevImage(images, imageIndex, setImageIndex)}
+            >
+              {"<"}
+            </CarouselButtonLeft>
           )}
           <ProductImage
             src={images[imageIndex]}
             alt="Product Image"
-            onError={() => handleImageError(imageIndex)}
+            onError={() =>
+              handleImageError(imageIndex, imageIndex, setImageIndex, setImages)
+            }
           />
           {images.length > 1 && (
             <>
-              <CarouselButton onClick={handleNextImage}>{">"}</CarouselButton>
+              <CarouselButtonRight
+                onClick={() =>
+                  handleNextImage(images, imageIndex, setImageIndex)
+                }
+              >
+                {">"}
+              </CarouselButtonRight>
+
               <ImageCounter>
                 {imageIndex + 1}/{images.length}
               </ImageCounter>
