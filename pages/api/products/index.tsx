@@ -22,6 +22,7 @@ const addProductHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     model,
     description,
     color,
+    offers,
   } = req.body;
 
   try {
@@ -54,6 +55,7 @@ const addProductHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       model,
       description,
       color,
+      offers,
     });
 
     console.log("Product:", product);
