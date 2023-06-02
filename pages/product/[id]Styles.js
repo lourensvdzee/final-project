@@ -109,8 +109,22 @@ export const OffersList = styled.ul`
   margin: 0;
   padding: 0;
   display: flex;
+  flex-wrap: wrap;
 `;
 
 export const OfferItem = styled.li`
+  margin-top: -10px;
   margin-right: 10px;
+
+  img {
+    width: 70px;
+    height: 40px;
+    object-fit: contain;
+  }
+`;
+
+export const OfferPrice = styled.p`
+  display: flex;
+  justify-content: center;
+  margin-top: 2px;
 `;

@@ -19,6 +19,19 @@ export interface DbProduct extends Document {
   model: string;
   description: string;
   color: string;
+  offers: {
+    merchant: string;
+    domain: string;
+    title: string;
+    currency: string;
+    list_price: number;
+    price: number;
+    shipping: string;
+    condition: string;
+    availability: string;
+    link: string;
+    updated_t: number;
+  }[];
 }
 
 const { Schema } = mongoose;
@@ -43,6 +56,21 @@ const dbProductSchema = new Schema({
   model: { type: String, required: true },
   description: { type: String },
   color: { type: String },
+  offers: [
+    {
+      merchant: { type: String },
+      domain: { type: String },
+      title: { type: String },
+      currency: { type: String },
+      list_price: { type: Number },
+      price: { type: Number },
+      shipping: { type: String },
+      condition: { type: String },
+      availability: { type: String },
+      link: { type: String },
+      updated_t: { type: Number },
+    },
+  ],
 });
 
 const Durability =

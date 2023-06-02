@@ -1,3 +1,5 @@
+//components/AverageDurability/AverageDurability.tsx
+
 export function getAverageDurability(durability) {
   const count = durability.length;
   if (count > 0) {

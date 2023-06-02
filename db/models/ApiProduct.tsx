@@ -11,6 +11,19 @@ export interface ApiProduct {
   model: string;
   description: string;
   color: string;
+  offers: {
+    merchant: string;
+    domain: string;
+    title: string;
+    currency: string;
+    list_price: number;
+    price: number;
+    shipping: string;
+    condition: string;
+    availability: string;
+    link: string;
+    updated_t: number;
+  }[];
 }
 
 interface ApiItem {
@@ -18,7 +31,17 @@ interface ApiItem {
   ean: string;
   images: string[];
   offers: {
+    merchant: string;
+    domain: string;
+    title: string;
+    currency: string;
+    list_price: number;
     price: number;
+    shipping: string;
+    condition: string;
+    availability: string;
+    link: string;
+    updated_t: number;
   }[];
   brand: string;
   model: string;
@@ -54,6 +77,19 @@ export const fetchApiProducts = async (
         model: item.model,
         description: item.description,
         color: item.color,
+        offers: item.offers.map((offer) => ({
+          merchant: offer.merchant,
+          domain: offer.domain,
+          title: offer.title,
+          currency: offer.currency,
+          list_price: offer.list_price,
+          price: offer.price,
+          shipping: offer.shipping,
+          condition: offer.condition,
+          availability: offer.availability,
+          link: offer.link,
+          updated_t: offer.updated_t,
+        })),
       }));
 
       return apiProducts;

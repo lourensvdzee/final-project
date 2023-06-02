@@ -34,6 +34,7 @@ const Overlay: React.FC<Props> = ({ product, onCancel }) => {
       model: product.model,
       description: product.description,
       color: product.color,
+      offers: product.offers, // add this line
     };
 
     try {

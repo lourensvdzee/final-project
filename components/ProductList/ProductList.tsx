@@ -51,7 +51,7 @@ const ProductList: React.FC<Props> = ({ products }) => {
                   <ProductInfoRight>
                     <PriceTitle>Price:</PriceTitle>
                     <PriceValue>${product.lowest_recorded_price}</PriceValue>
-                    <DurabilityTitle>Durability (months):</DurabilityTitle>
+                    <DurabilityTitle>Durability:</DurabilityTitle>
                     <DurabilityValue>
                       {getAverageDurability(product.durability)}{" "}
                     </DurabilityValue>

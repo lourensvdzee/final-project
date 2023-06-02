@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { GetServerSideProps } from "next";
 import dbConnect from "../../db/connect";
-import { DbProduct } from "../../db/models/DbProduct";
+import { DbProduct, Durability } from "../../db/models/DbProduct";
 import { getAverageDurability } from "../../components/AverageDurability/AverageDurability";
 import {
   CardDb,
@@ -23,6 +23,7 @@ import {
   OffersTitle,
   OffersList,
   OfferItem,
+  OfferPrice,
 } from "./[id]Styles";
 
 interface Props {
@@ -51,6 +52,35 @@ export default function ProductPage({ product }: Props) {
       setImageIndex(0);
     }
   };
+
+  function getLogoPath(domain: string) {
+    const domainParts = domain.split(".");
+    const logoFileNames = [
+      "indigo",
+      "adorama",
+      "bestbuy",
+      "sears",
+      "argos",
+      "walmart",
+      "rakuten",
+      "newegg",
+      "target",
+      "brookstone",
+      "pricefalls",
+      "macys",
+      "guitarcenter",
+      "musiciansfriend",
+      "onbuy",
+    ];
+
+    for (const part of domainParts) {
+      if (logoFileNames.includes(part)) {
+        return `/logos/${part}.png`;
+      }
+    }
+
+    return ""; // return an empty string if no matching logo is found
+  }
 
   return (
     <CardDb>
@@ -85,18 +115,34 @@ export default function ProductPage({ product }: Props) {
           <ProductInfoText>{product.color}</ProductInfoText>
         </ProductInfoWrapper>
         <DurabilityWrapper>
-          <DurabilityTitle>Durability (months):</DurabilityTitle>
+          <DurabilityTitle>Durability:</DurabilityTitle>
           <DurabilityValue>
-            {getAverageDurability(product.durability)}
+            {getAverageDurability(product.durability)}{" "}
           </DurabilityValue>
         </DurabilityWrapper>
         <OffersWrapper>
           <OffersTitle>Offers:</OffersTitle>
           <OffersList>
-            {/* Replace this with real data from the API */}
-            <OfferItem>Merchant A</OfferItem>
-            <OfferItem>Merchant B</OfferItem>
-            <OfferItem>Merchant C</OfferItem>
+            {product.offers
+              .slice()
+              .sort((a, b) => a.price - b.price)
+              .map((offer) => (
+                <OfferItem key={offer.merchant}>
+                  <a
+                    href={offer.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div>
+                      <img
+                        src={getLogoPath(offer.domain)}
+                        alt={`${offer.merchant} logo`}
+                      />
+                      <OfferPrice>${offer.price}</OfferPrice>
+                    </div>
+                  </a>
+                </OfferItem>
+              ))}
           </OffersList>
         </OffersWrapper>
       </ProductWrapper>
@@ -114,7 +160,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
   const id = context.params?.id;
 
   // Fetch detailed information about the product from the database
-  const product = await DbProduct.findById(id);
+  const product = await DbProduct.findById(id).populate("durability");
 
   return { props: { product: JSON.parse(JSON.stringify(product)) } };
 };
