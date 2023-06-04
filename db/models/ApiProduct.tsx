@@ -16,7 +16,7 @@ export interface ApiProduct {
     domain: string;
     title: string;
     currency: string;
-    list_price: number;
+    list_price: number | string;
     price: number;
     shipping: string;
     condition: string;
