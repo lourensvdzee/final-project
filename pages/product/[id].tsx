@@ -50,7 +50,26 @@ export default function ProductPage({ product }: Props) {
     durabilityEnd: string
   ) => {
     // Send a request to your API to update the product in the database with the new durability experience
-    // ...
+    try {
+      const res = await fetch(`/api/products/${product._id}/durability`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          start: new Date(durabilityStart),
+          end: new Date(durabilityEnd),
+        }),
+      });
+
+      if (res.ok) {
+        console.log("Durability added successfully!");
+      } else {
+        console.error("Failed to add durability to the database.");
+      }
+    } catch (error) {
+      console.error("Error adding durability to the database:", error);
+    }
 
     // Hide the AddDurability component
     setShowAddDurability(false);

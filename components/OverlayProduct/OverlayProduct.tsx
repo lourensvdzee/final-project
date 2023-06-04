@@ -1,3 +1,5 @@
+// components/OverlayProduct/OverlayProduct.tsx
+
 import React, { useState } from "react";
 import MonthYearInput from "../../utils/monthYearInput";
 import { ApiProduct } from "../../db/models/ApiProduct";
