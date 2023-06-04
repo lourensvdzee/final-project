@@ -24,10 +24,8 @@ export const ProductTitle = styled.h2`
 
 export const ImageWrapper = styled.div`
   position: relative;
-  max-width:320px;
-  max-height: 320px;
-  min-width:320px;
-  min-height: 320px;
+  height: 320px;
+  width: 320px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,6 +34,12 @@ export const ImageWrapper = styled.div`
   border: 1px solid #ccc;
   box-shadow: 0 0 10px 0 #ccc;
   `;
+
+export const ProductImage = styled.img`
+ width: 75%;
+ height: 75%;
+ object-fit: scale-down;
+`;
 
 export const CarouselButtonLeft = styled.button`
  position: absolute;
@@ -61,11 +65,6 @@ export const ImageCounter = styled.span`
  left: calc(50% -20px);
 `;
 
-export const ProductImage = styled.img`
-  max-width: 75%;
-  max-height: 75%;
-  object-fit: contain;
-`;
 
 export const ProductInfoWrapper = styled.div`
   border-radius: 10px;
