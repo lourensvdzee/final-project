@@ -95,3 +95,20 @@ font-weight: bold;
 font-size: 1.6em;
 margin-top: 0px;
 `;
+
+export const AddButton = styled.button`
+  margin: 10px;
+  border-radius: 7px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px 0 #ccc;
+  padding: 5px;
+
+  &:hover {
+    background-color: lightgray;
+  }
+
+  &:active {
+    box-shadow: inset 0px 0px 5px #c1c1c1;
+    transform: translateY(2px);
+  }
+`;
