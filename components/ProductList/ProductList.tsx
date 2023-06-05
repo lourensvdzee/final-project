@@ -18,6 +18,8 @@ import {
   PriceValue,
   DurabilityTitle,
   DurabilityValue,
+  DurabilityWrapper,
+  DurabilityCount,
 } from "./ProductListStyles";
 
 interface Props {
@@ -52,9 +54,14 @@ const ProductList: React.FC<Props> = ({ products }) => {
                     <PriceTitle>Price:</PriceTitle>
                     <PriceValue>${product.lowest_recorded_price}</PriceValue>
                     <DurabilityTitle>Durability:</DurabilityTitle>
-                    <DurabilityValue>
-                      {getAverageDurability(product.durability)}{" "}
-                    </DurabilityValue>
+                    <DurabilityWrapper>
+                      <DurabilityValue>
+                        {getAverageDurability(product.durability)}
+                      </DurabilityValue>
+                      <DurabilityCount>
+                        ({product.durability.length})
+                      </DurabilityCount>
+                    </DurabilityWrapper>
                   </ProductInfoRight>
                 </ProductInfo>
               </CardDb>

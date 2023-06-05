@@ -34,6 +34,8 @@ import {
   OffersList,
   OfferItem,
   OfferPrice,
+  DurabilityValueWrapper,
+  DurabilityCount,
 } from "./[id]Styles";
 
 interface Props {
@@ -122,9 +124,12 @@ export default function ProductPage({ product }: Props) {
         </ProductInfoWrapper>
         <DurabilityWrapper>
           <DurabilityTitle>Durability:</DurabilityTitle>
-          <DurabilityValue>
-            {getAverageDurability(product.durability)}
-          </DurabilityValue>
+          <DurabilityValueWrapper>
+            <DurabilityValue>
+              {getAverageDurability(product.durability)}
+            </DurabilityValue>
+            <DurabilityCount>({product.durability.length})</DurabilityCount>
+          </DurabilityValueWrapper>
           <DurabilityButton onClick={() => setShowAddDurability(true)}>
             Add your durability experience!
           </DurabilityButton>

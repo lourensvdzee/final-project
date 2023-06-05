@@ -106,6 +106,19 @@ export const DurabilityValue = styled.h1`
 
 `;
 
+export const DurabilityValueWrapper = styled.div`
+ display: flex;
+ justify-content: center;
+ align-items: center;
+`;
+
+export const DurabilityCount = styled.span`
+ font-size: 0.8rem;
+ font-weight: normal;
+ margin-top: -23px;
+ margin-left: 8px;
+`;
+
 export const DurabilityButton = styled.button`
   margin-top: -5px;
   border-radius: 7px;
