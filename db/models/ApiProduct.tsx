@@ -65,6 +65,16 @@ export const fetchApiProducts = async (
     const response = await fetch(
       `${apiUrl}?s=${searchQuery}&match_mode=${matchMode}&type=${type}`
     );
+
+    // Access the headers of the response
+    const headers = response.headers;
+
+    // Get the value of the x-ratelimit-remaining header
+    const rateLimitRemaining = headers.get("x-ratelimit-remaining");
+
+    // Log the value to the console
+    console.log("Rate limit remaining:", rateLimitRemaining);
+
     const data = (await response.json()) as ApiResponse;
 
     if (data && data.items && data.items.length > 0) {
