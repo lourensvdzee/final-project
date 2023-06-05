@@ -2,10 +2,8 @@
 
 import styled from 'styled-components';
 
-const StyledBellCurve = styled.div`
+export const StyledBellCurve = styled.div`
   font: 10px sans-serif;
-  height: 320px;
-  width: 320px;
 
   .axis path,
   .axis line {

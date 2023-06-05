@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import * as d3 from "d3";
 import { select } from "d3-selection";
 import "d3-transition";
+import { StyledBellCurve } from "./BellCurveStyles";
 
 interface DataPoint {
   q: number;
@@ -53,8 +54,8 @@ const BellCurve = ({ durabilityData }: Props) => {
     );
 
     // Set up the x and y axes
-    const xAxis = d3.axisBottom(x);
-    const yAxis = d3.axisLeft(y);
+    const xAxis = d3.axisBottom(x).ticks(12);
+    const yAxis = d3.axisLeft(y).ticks(8);
 
     // Set up the line generator
     const line = d3
@@ -93,7 +94,11 @@ const BellCurve = ({ durabilityData }: Props) => {
     svg.append("path").datum(data).attr("class", "line").attr("d", line);
   }, [data]);
 
-  return <div id="chart"></div>;
+  return (
+    <StyledBellCurve>
+      <div id="chart"></div>
+    </StyledBellCurve>
+  );
 };
 
 function getData(durabilityData) {
