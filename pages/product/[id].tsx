@@ -13,6 +13,7 @@ import {
   handleNextImage,
   handleImageError,
 } from "../../utils/imageHandlers";
+import BellCurve from "../../components/BellCurve/BellCurve";
 import {
   CardDb,
   ProductWrapper,
@@ -124,6 +125,7 @@ export default function ProductPage({ product }: Props) {
         </ProductInfoWrapper>
         <DurabilityWrapper>
           <DurabilityTitle>Durability:</DurabilityTitle>
+          <BellCurve durabilityData={product.durability} />
           <DurabilityValueWrapper>
             <DurabilityValue>
               {getAverageDurability(product.durability)}

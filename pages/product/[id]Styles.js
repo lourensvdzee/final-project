@@ -21,7 +21,6 @@ export const ProductWrapper = styled.div`
 export const ProductTitle = styled.h2`
 `;
 
-
 export const ImageWrapper = styled.div`
   position: relative;
   height: 320px;
