@@ -138,6 +138,7 @@ export default function ProductPage({ product }: Props) {
           <OffersTitle>Offers:</OffersTitle>
           <OffersList>
             {product.offers
+              .filter((offer) => getLogoPath(offer.domain) !== "")
               .slice()
               .sort((a, b) => a.price - b.price)
               .map((offer) => (
