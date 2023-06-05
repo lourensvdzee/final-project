@@ -108,10 +108,23 @@ align-self: center;
 margin-top: 20px;
 `;
 
+export const DurabilityWrapper = styled.div`
+ display: flex;
+ justify-content: center;
+ align-items: center;
+`;
+
 export const DurabilityValue = styled.p`
 justify-self: center;
 align-self: center;
 font-weight: bold;
 font-size: 1.4em;
-margin-top: 0px;
+margin-top: 0;
+`;
+
+export const DurabilityCount = styled.span`
+ font-size: 0.8rem;
+ font-weight: normal;
+ margin-top: -17px;
+ margin-left: 5px;
 `;

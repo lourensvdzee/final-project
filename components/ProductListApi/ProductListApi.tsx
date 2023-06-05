@@ -14,6 +14,7 @@ import {
   ProductInfoRight,
   PriceTitle,
   PriceValue,
+  AddButton,
 } from "./ProductListApiStyles";
 import Overlay from "../OverlayProductList/OverlayProductList";
 
@@ -91,9 +92,9 @@ const ProductListApi: React.FC<Props> = ({ products }) => {
                 <ProductInfoRight>
                   <PriceTitle>Price:</PriceTitle>
                   <PriceValue>${product.lowest_recorded_price}</PriceValue>
-                  <button onClick={() => handleAddProduct(product)}>
+                  <AddButton onClick={() => handleAddProduct(product)}>
                     Share durability + Add to database
-                  </button>
+                  </AddButton>
                 </ProductInfoRight>
               </ProductInfo>
             </CardApi>

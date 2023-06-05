@@ -21,7 +21,6 @@ export const ProductWrapper = styled.div`
 export const ProductTitle = styled.h2`
 `;
 
-
 export const ImageWrapper = styled.div`
   position: relative;
   height: 320px;
@@ -104,6 +103,20 @@ export const DurabilityValue = styled.h1`
   margin-left: 0px;
   margin-top: -5px;
 
+`;
+
+export const DurabilityValueWrapper = styled.div`
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ margin-top: 15px;
+`;
+
+export const DurabilityCount = styled.span`
+ font-size: 0.8rem;
+ font-weight: normal;
+ margin-top: -23px;
+ margin-left: 8px;
 `;
 
 export const DurabilityButton = styled.button`

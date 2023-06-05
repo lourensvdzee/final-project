@@ -13,6 +13,7 @@ import {
   handleNextImage,
   handleImageError,
 } from "../../utils/imageHandlers";
+import BellCurve from "../../components/BellCurve/BellCurve";
 import {
   CardDb,
   ProductWrapper,
@@ -34,6 +35,8 @@ import {
   OffersList,
   OfferItem,
   OfferPrice,
+  DurabilityValueWrapper,
+  DurabilityCount,
 } from "./[id]Styles";
 
 interface Props {
@@ -122,9 +125,13 @@ export default function ProductPage({ product }: Props) {
         </ProductInfoWrapper>
         <DurabilityWrapper>
           <DurabilityTitle>Durability:</DurabilityTitle>
-          <DurabilityValue>
-            {getAverageDurability(product.durability)}
-          </DurabilityValue>
+          <BellCurve durabilityData={product.durability} />
+          <DurabilityValueWrapper>
+            <DurabilityValue>
+              {getAverageDurability(product.durability)}
+            </DurabilityValue>
+            <DurabilityCount>({product.durability.length})</DurabilityCount>
+          </DurabilityValueWrapper>
           <DurabilityButton onClick={() => setShowAddDurability(true)}>
             Add your durability experience!
           </DurabilityButton>
@@ -133,6 +140,7 @@ export default function ProductPage({ product }: Props) {
           <OffersTitle>Offers:</OffersTitle>
           <OffersList>
             {product.offers
+              .filter((offer) => getLogoPath(offer.domain) !== "")
               .slice()
               .sort((a, b) => a.price - b.price)
               .map((offer) => (
