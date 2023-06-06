@@ -37,7 +37,7 @@ import {
   OfferPrice,
   DurabilityValueWrapper,
   DurabilityCount,
-} from "./[id]Styles";
+} from "../../styles/productPageStyles";
 
 interface Props {
   product: DbProduct;
